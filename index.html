@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>online vegetable store</title>
+    <style>
+      h1 {
+        text-align: center;
+        background-color: pink;
+      }
+      .container {
+        text-align: center;
+      }
+
+      button:hover {
+        background-color: blue;
+      }
+      h3 {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>online vegetable store</h1>
+      <div id="container2">
+        <h2>list of vegetables:</h2>
+        <h3>potato</h3>
+        <button id="minus">-</button>
+        <span id="total"> </span>
+        <button id="plus">+</button>
+      </div>
+      <br />
+      <div>
+        <h3>tomato</h3>
+        <h3>onion</h3>
+        <h3>peas</h3>
+        <h3>corn</h3>
+        <h3>cabbage</h3>
+        <h3>carrot</h3>
+        <h3>capsicum</h3>
+        <h3>beetroot</h3>
+        <h3>radish</h3>
+      </div>
+
+      <button onclick="result()">Result</button>
+      <div id="result1"></div>
+    </div>
+    <script>
+      count = 0;
+      minus = document.getElementById("minus");
+      plus = document.getElementById("plus");
+      total = document.getElementById("total");
+      total.innerHTML = count;
+
+      plus.addEventListener("click", () => {
+        count++;
+        total.innerHTML = count;
+      });
+      minus.addEventListener("click", () => {
+        if (count > 0) {
+          count--;
+          total.innerHTML = count;
+        }
+      });
+
+      function result() {
+        res = document.getElementById("result1");
+        res.innerHTML = `<h2>potato quantity:${count}<h2>`;
+      }
+    </script>
+  </body>
+</html>
