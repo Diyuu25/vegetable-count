@@ -1,0 +1,120 @@
+`
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      h1 {
+        text-align: center;
+        background-color: pink;
+      }
+      #veg {
+        color: red;
+      }
+      h3 {
+        text-align: center;
+        color: blue;
+        font-weight: bold;
+      }
+      .container {
+        text-align: center;
+      }
+      #vege {
+        color: red;
+        font-weight: bold;
+        font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+      }
+      button:hover {
+        color: yellow;
+        background-color: black;
+      }
+      h2 {
+        color: red;
+        font-weight: bold;
+        text-shadow: black;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>ONLINE VEGETABLE STORE</h1>
+    <h3>Lists of Vegetables:</h3>
+    <div class="container">
+      <p id="vege"></p>
+      <!-- <button class="minus">-</button>
+      <span class="total"> </span>
+      <button class="plus">+</button> -->
+
+      <br />
+      <button id="final">SHOW RESULT</button>
+      <div id="finalresult"></div>
+    </div>
+  </body>
+  <script>
+    let veg = [
+      "potato",
+      "tomato",
+      "carrot",
+      "peas",
+      "corn",
+      "onion",
+      "capsicum",
+      "beetroot",
+      "raddish",
+      "cabbage",
+    ];
+    let count = {
+      potato: 0,
+      tomato: 0,
+      carrot: 0,
+      peas: 0,
+      corn: 0,
+      onion: 0,
+      capsicum: 0,
+      beetroot: 0,
+      raddish: 0,
+      cabbage: 0,
+    };
+    vege = document.getElementById("vege");
+    let temp = "";
+    // let value = Object.values(count);
+    let value = Object.keys(count);
+    for (let i = 0; i < veg.length; i++) {
+      //   console.log(veg[i]);
+      temp += `<span>${veg[i]} :</span><button class="minus">-</button>
+      <span class="total">${count[value[i]]} </span>
+      <button class="plus">+</button></br><br>`;
+    }
+    vege.innerHTML = temp;
+
+    minus = document.getElementsByClassName("minus");
+    plus = document.getElementsByClassName("plus");
+    total = document.getElementsByClassName("total");
+
+    for (let i = 0; i < veg.length; i++) {
+      plus[i].addEventListener("click", () => {
+        count[value[i]]++;
+        total[i].innerHTML = count[value[i]];
+      });
+      minus[i].addEventListener("click", () => {
+        if (count[value[i]] > 0) {
+          count[value[i]]--;
+          total[i].innerHTML = count[value[i]];
+        }
+      });
+    }
+
+    document.getElementById("final").addEventListener("click", () => {
+      let key = Object.keys(count);
+      let values = Object.values(count);
+      let obj = "<h2>Total Count:</h2>";
+      let final = document.getElementById("finalresult");
+      for (let i = 0; i < key.length; i++) {
+        obj += `<h3>${key[i]}:${values[i]}</h3>`;
+      }
+      final.innerHTML += obj;
+    });
+  </script>
+</html>
